@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/default.css" />
+    <link rel="stylesheet" type="text/css" href="css/multilevelmenu.css" />
+	<link rel="stylesheet" type="text/css" href="css/component.css" />
+	<link rel="stylesheet" type="text/css" href="css/animations.css" />
+    <script src="lib/jquery/jquery-1.7.2.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+
+	<script src="js/modernizr.custom.js"></script>
+  </head>
+  
+  <body ng-app="problemSwitcher">
+    <h2>Problem Switcher V2 + CSS Transition</h2>
+    <div ng-controller="SwitchCtrl">
+      <lesson>
+      	<button ng-hide='start || finish' ng-click='initData()' class="pt-touch-button pt-triggers" style="top:50%">开始答题</button>
+        <div id="pt-main" class="pt-perspective" switch="showSummary()">
+      	    <div class="pt-page pt-page-{{problem.id}}" ng-repeat='problem in problems' problem></div>
+            <result ng-show="summary" class="showSummary"></result>
+        </div>
+        <button ng-show="start"  class="pt-touch-button pt-triggers" id='iterateEffects'>继&nbsp;续</button>
+      </lesson>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/pagetransitions.js" defer="defer"></script>
+  </body>
+  
+</html>
